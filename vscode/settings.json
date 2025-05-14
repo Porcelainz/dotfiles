@@ -1,0 +1,100 @@
+{
+  "[javascript]": {
+    "editor.maxTokenizationLineLength": 2500
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontLigatures": true,
+  "files.autoSave": "onFocusChange",
+  "files.watcherExclude": {
+    "**/.ammonite": true,
+    "**/.bloop": true,
+    "**/.metals": true
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "terminal.integrated.env.osx": {
+    "CW_NEW_SESSION": "1",
+    "FIG_NEW_SESSION": "1"
+  },
+  "terminal.integrated.fontFamily": "JetBrainsMono NF",
+  "terminal.integrated.fontSize": 14,
+  "window.autoDetectHighContrast": false,
+  "window.menuBarVisibility": "visible",
+  "editor.fontSize": 14,
+  "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.guides.bracketPairs": true,
+  "go.toolsManagement.autoUpdate": true,
+  // "editor.tokenColorCustomizations": {
+  //   "textMateRules": [
+  //     {
+  //       "scope": [
+  //         "keyword"
+  //       ],
+  //       "settings": {
+  //         "fontStyle": "" // 去除 bold，設為空字串
+  //       }
+  //     }
+  //   ]
+  // },
+  "editor.semanticHighlighting.enabled": true,
+  "terminal.integrated.minimumContrastRatio": 1,
+  "window.titleBarStyle": "custom",
+  "editor.semanticTokenColorCustomizations": {
+    "[Tokyo Night]": {
+      "enabled": true
+    },
+    "[Tokyo Night Storm]": {
+      "enabled": true
+    },
+    "[Tokyo Night Light]": {
+      "enabled": true
+    },
+    "[Catppuccin Mocha]": {
+      "enabled": true
+    },
+    "[Catppuccin Macchiato]": {
+      "enabled": true
+    },
+    "[Ghibli's Spirited Away]": {
+      "enabled": true
+    },
+    "[Ghibli's Kiki's Delivery Service]": {
+      "enabled": true
+    },
+    "[Ghibli's My Neighbor Totoro]": {
+      "enabled": true
+    },
+    "[Kanagawa Wave]": {
+      "enabled": true
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "terminal.integrated.lineHeight": 0,
+  "markdown.preview.lineHeight": 0,
+  "editor.lineHeight": 22,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "golang.go",
+  "database-client.autoSync": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "go": false
+  },
+  "go.useLanguageServer": true,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "go.inlayHints.assignVariableTypes": true,
+  "go.inlayHints.functionTypeParameters": true,
+  "go.inlayHints.parameterNames": true,
+  "go.inlayHints.rangeVariableTypes": true,
+  "diffEditor.codeLens": true,
+  "workbench.iconTheme": "nomo-light-extended",
+}
