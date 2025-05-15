@@ -117,11 +117,13 @@ alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
+alias wego='curl wttr.in/Taipei'
 alias l.='eza -a | egrep "^\."'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# golang 
+export PATH=$PATH:$(go env GOPATH)/bin
 # ========================
 # 🚀 Zsh + p10k 強化版
 # ========================
@@ -197,8 +199,10 @@ export FZF_DEFAULT_OPTS='
   --color=fg+:#ffffff,bg+:#303030,hl+:#8be9fd
   --color=info:#bd93f9,prompt:#ff79c6,pointer:#ffb86c
   --color=marker:#50fa7b,spinner:#f1fa8c,header:#6272a4
+  
 '
-
+export FZF_ALT_C_COMMAND='eza --only-dirs --all --color=always --icons'
+export FZF_ALT_C_OPTS='--ansi --preview "eza --tree --level=2 --icons {}"'
 # ========================
 git-switch() {
   local branch
@@ -208,3 +212,10 @@ git-switch() {
     git checkout "$branch"
   fi
 }
+
+#==docker ==
+if ! pgrep -x dockerd > /dev/null; then
+  echo "🐳 Starting Docker Daemon... Let's go!"
+  sudo dockerd > /dev/null 2>&1 &
+  echo "✅ Docker Daemon already started Let's go!"
+fi
