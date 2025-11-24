@@ -1,0 +1,15 @@
+[1;36masvetliakov.vscode-neovim-1.18.24-universal[0m
+[1;36mcatppuccin.catppuccin-vsc-3.18.1-universal[0m
+[1;36mcatppuccin.catppuccin-vsc-icons-1.26.0-universal[0m
+[1;36mdautroc.yazi-vscode-1.0.9-universal[0m
+[1;36mdez64ru.macos-modern-theme-2.3.18-universal[0m
+[1;36mfisheva.eva-theme-2.7.1-universal[0m
+[1;36mgithub.github-vscode-theme-6.3.5-universal[0m
+[1;36mgolang.go-0.50.0-universal[0m
+[1;36mms-azuretools.vscode-containers-2.2.0-universal[0m
+[1;36mms-azuretools.vscode-docker-2.0.0-universal[0m
+[1;36mms-ceintl.vscode-language-pack-zh-hant-1.104.0-universal[0m
+[1;36mpixl-garden.bongocat-0.0.2-universal[0m
+[1;36mshalldie.background-2.0.3-universal[0m
+[1;36musernamehw.errorlens-3.26.0-universal[0m
+extensions.json

@@ -16,7 +16,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOROOT)/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -109,8 +110,6 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
-#export PATH=$PATH:"/home/porcelain/.local/bin"
-#export PATH=$PATH:"/snap/bin/"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # Changing "ls" to "exa"
 alias ls='eza --icons --color=always --group-directories-first'
@@ -118,6 +117,7 @@ alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias wego='curl wttr.in/Taipei'
+alias c='clear'
 alias l.='eza -a | egrep "^\."'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -136,13 +136,12 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 # 3. 加強 Ctrl+R 搜尋歷史（如果你有裝 fzf，會更強）
-if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
-fi
 
 # 4. 指令錯誤高亮提示（看錯字一眼就知道）
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+if (( ${+ZSH_HIGHLIGHT_STYLES} )); then
+  ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+fi
 
 # 5. 把補齊列表變超帥（分組 + 直排）
 autoload -Uz compinit && compinit
@@ -164,7 +163,7 @@ zstyle ':completion::complete:*' cache-path ~/.zsh/cache
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # 2. Ctrl+R 搜尋歷史紀錄強化版
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2> /dev/null || find . -type f'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_R_OPTS='
   --reverse
   --prompt="History> "
@@ -212,10 +211,108 @@ git-switch() {
     git checkout "$branch"
   fi
 }
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# export HOMEBREW_NO_INSTALL_FROM_API=1
+# Yazi: cd on quit (Corrected version)
+# https://yazi-rs.github.io/docs/faq#cd-on-quit
+yazi () {
+    local tmp="$(mktemp -t "yazi-cd.XXXXXX")"
+    # 關鍵！在 yazi 前面加上 "command"
+    command yazi --cwd-file="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        cd "$(cat "$tmp")"
+    fi
+    rm -f "$tmp" 2>/dev/null
+}
 
-#==docker ==
-if ! pgrep -x dockerd > /dev/null; then
-  echo "🐳 Starting Docker Daemon... Let's go!"
-  sudo dockerd > /dev/null 2>&1 &
-  echo "✅ Docker Daemon already started Let's go!"
-fi
+# pnpm
+export PNPM_HOME="/Users/porcelain_/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# --- Homebrew Aliases ---
+# porcelain's brew shortcuts 🍻
+
+# 基本操作
+alias b='brew'
+alias bi='brew install'
+alias bic='brew install --cask' # 安裝 GUI 應用程式
+alias buin='brew uninstall'
+alias bunc='brew uninstall --cask'
+alias bs='brew search'
+alias bl='brew list'
+alias binfo='brew info'
+alias bdoc='brew doctor' # 檢查 brew 健康度
+alias bcl='brew cleanup'  # 清理舊版本
+
+# 更新與升級 (這組最常用！)
+alias bup='brew update'
+alias bug='brew upgrade' # update + upgrade，用 bug 這個詞是不是很好記 XD
+alias bupg='brew update && brew upgrade' # 我個人更愛這個，明確分離 update 和 upgrade
+
+# 結合 fzf 的 brew 互動式安裝/移除 function
+# 使用方法: bf - 安裝 formula, bfc - 安裝 cask, bfu - 移除
+
+# 互動式安裝 formula (e.g., git, node)
+bf() {
+  local inst=$(brew search "$1" | fzf -m --preview 'brew info {}')
+  if [[ -n $inst ]]; then
+    for package in $(echo $inst); do
+      brew install $package
+    done
+  fi
+}
+
+# 互動式安裝 Cask (e.g., google-chrome, visual-studio-code)
+bfc() {
+  local inst=$(brew search --casks "$1" | fzf -m --preview 'brew info --cask {}')
+  if [[ -n $inst ]]; then
+    for cask in $(echo $inst); do
+      brew install --cask $cask
+    done
+  fi
+}
+
+# 互動式移除 (formula & cask 皆可)
+bfu() {
+    local uninst=$(brew list -1 | fzf -m --preview 'brew info {}')
+    if [[ -n $uninst ]]; then
+        for package in $(echo $uninst); do
+            brew uninstall $package
+        done
+    fi
+}
+
+# --------------------
+# Zoxide Setup
+# --------------------
+eval "$(zoxide init zsh)"
+
+# zoxide + fzf 穩定整合最終版
+zi() {
+    # 1. 用 `zoxide query -l` 取得所有路徑的純文字列表
+    # 2. 把列表餵給 fzf 讓使用者做選擇
+    # 3. 把選到的路徑存到 selected_dir 這個變數裡
+    local selected_dir
+    selected_dir="$(zoxide query -l | fzf)"
+
+    # 4. 如果使用者真的有選擇東西 (變數不是空的)
+    #    (避免按 Esc 取消時也執行)
+    # 5. 就用 `z` 指令跳到選定的路徑
+    if [[ -n "$selected_dir" ]]; then
+        z "$selected_dir"
+    fi
+}
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+# Added by Antigravity
+export PATH="/Users/porcelain_/.antigravity/antigravity/bin:$PATH"
+
+export PATH=$PATH:/Users/porcelain_/.spicetify
