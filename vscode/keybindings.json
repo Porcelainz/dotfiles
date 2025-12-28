@@ -1,28 +1,54 @@
-// 將按鍵繫結關係放在此檔案中以覆寫預設
 [
+    // ========================================================
+    // 🪟 視窗導航 (Window Navigation - HJKL) 12/28
+    // ========================================================
     {
-        "key": "alt+d",
-        "command": "-cody.command.document-code",
-        "when": "cody.activated && !editorReadonly"
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
     },
     {
-        "key": "ctrl+1",
-        "command": "-workbench.action.focusFirstEditorGroup"
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
     },
     {
-        "key": "alt+1",
-        "command": "references-view.findReferences",
-        "when": "editorHasReferenceProvider"
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
     },
     {
-        "key": "shift+alt+f12",
-        "command": "-references-view.findReferences",
-        "when": "editorHasReferenceProvider"
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    },
+    // ========================================================
+    // 🌲 檔案總管導航 (File Explorer - HJKL)
+    // ========================================================
+    {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "filesExplorerFocus && !inputFocus"
     },
     {
-        "key": "ctrl+2",
-        "command": "-workbench.action.focusSecondEditorGroup"
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "filesExplorerFocus && !inputFocus"
     },
+    {
+        "key": "l",
+        "command": "list.select", // 打開檔案 / 展開資料夾
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "h",
+        "command": "list.collapse", // 收合資料夾
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "list.select",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    // ========================================================
+    // 🚀 程式碼導航與定義 (Alt 系列)
+    // ========================================================
     {
         "key": "alt+d",
         "command": "editor.action.revealDefinition",
@@ -34,16 +60,6 @@
         "when": "editorHasDefinitionProvider && editorTextFocus"
     },
     {
-        "key": "ctrl+capslock",
-        "command": "editor.action.quickFix",
-        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+oem_period",
-        "command": "-editor.action.quickFix",
-        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
-    },
-    {
         "key": "alt+2",
         "command": "editor.action.peekDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
@@ -53,9 +69,16 @@
         "command": "-editor.action.peekDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
     },
+    // --- 引用 (References) ---
     {
-        "key": "alt+4",
-        "command": "-workbench.action.openEditorAtIndex4"
+        "key": "alt+1",
+        "command": "references-view.findReferences",
+        "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "shift+alt+f12",
+        "command": "-references-view.findReferences",
+        "when": "editorHasReferenceProvider"
     },
     {
         "key": "alt+q",
@@ -67,6 +90,79 @@
         "command": "-editor.action.goToReferences",
         "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
     },
+    // --- 引用/搜尋結果導航 (Next/Prev) ---
+    {
+        "key": "alt+4",
+        "command": "references-view.next",
+        "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+        "key": "f4",
+        "command": "-references-view.next",
+        "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+        "key": "alt+3",
+        "command": "references-view.prev",
+        "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+        "key": "shift+f4",
+        "command": "-references-view.prev",
+        "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    // ========================================================
+    // 🧹 解除 VS Code 預設衝突
+    // ========================================================
+    {
+        "key": "ctrl+1",
+        "command": "-workbench.action.focusFirstEditorGroup"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "-workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "key": "alt+1",
+        "command": "-workbench.action.openEditorAtIndex1"
+    },
+    {
+        "key": "alt+2",
+        "command": "-workbench.action.openEditorAtIndex2"
+    },
+    {
+        "key": "alt+3",
+        "command": "-workbench.action.openEditorAtIndex3"
+    },
+    {
+        "key": "alt+4",
+        "command": "-workbench.action.openEditorAtIndex4"
+    },
+    // ========================================================
+    // 🛠️ 編輯器輔助功能
+    // ========================================================
+    {
+        "key": "ctrl+capslock",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+z",
+        "command": "-redo"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    // ========================================================
+    // 🌿 Git & Terminal
+    // ========================================================
     {
         "key": "alt+oem_3",
         "command": "workbench.view.scm",
@@ -78,22 +174,41 @@
         "when": "workbench.scm.active"
     },
     {
-        "key": "ctrl+p",
-        "command": "-extension.vim_ctrl+p",
-        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp",
+        "when": "terminalFocus"
+    },
+    // ========================================================
+    // 📋 剪貼簿控制 (Ctrl+C/V/X)
+    // ========================================================
+    {
+        "key": "ctrl+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "textInputFocus"
     },
     {
-        "key": "tab",
-        "command": "acceptSelectedSuggestion",
-        "when": "suggestWidgetVisible && textInputFocus"
+        "key": "ctrl+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "textInputFocus"
     },
     {
-        "key": "alt+left",
-        "command": "workbench.action.navigateBack",
-        // 這裡不加 when，讓它在任何時候 (包含 Vim insert mode) 都生效
+        "key": "ctrl+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "textInputFocus"
     },
     {
-        "key": "alt+right",
-        "command": "workbench.action.navigateForward",
+        "key": "ctrl+c",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.c"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.v"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.x"
     }
 ]
