@@ -4,38 +4,43 @@ return {
   -- 1. 確保 nvim-cmp 是被停用的 (如果有的話)
   { "hrsh7th/nvim-cmp", enabled = false },
 
-  -- 2. 設定新的霸主 blink.cmp
+  -- 2. 設定 blink.cmp
   {
     "saghen/blink.cmp",
     opts = {
       keymap = {
-        -- 'default' 預設是 Enter 確認，我們要把它改掉
-        preset = "none", -- 設為 none，讓我們完全自定義按鍵，避免衝突
+        preset = "none",
 
-        -- 🔥 Tab: 確認選取 (Accept) / 跳下一個 snippet / 縮排
+        -- 🔥 重點 1：Enter (CR) 只做換行，完全不碰選字
+        ['<CR>'] = { 'fallback' },
+
+        -- 🔥 重點 2：Tab 負責「確認選字」
+        -- 邏輯順序：
+        -- 1. 如果有選單 (menu)，按 Tab = 確認選字 (select_and_accept)
+        -- 2. 如果沒選單但在 snippet 裡，按 Tab = 跳下一個 (snippet_forward)
+        -- 3. 都沒有，按 Tab = 縮排 (fallback)
         ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
         
-        -- Shift+Tab: 往回跳 snippet
+        -- Shift+Tab 往回跳 snippet
         ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 
-        -- 🔥 Enter: 什麼都不做，直接換行 (fallback)
-        ['<CR>'] = { 'fallback' },
-        -- 🔥 新增這裡：讓 Ctrl+j / Ctrl+k 也能上下移動
-        ['<C-k>'] = { 'select_prev', 'fallback' }, -- 往上 (原本是 Ctrl-p)
-        ['<C-j>'] = { 'select_next', 'fallback' }, -- 往下 (原本是 Ctrl-n)
-        -- 上下鍵與 Ctrl-p/n: 選擇候選字
+        -- 導航鍵保持原樣 (Ctrl+k/j 或 上下)
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
         ['<Up>'] = { 'select_prev', 'fallback' },
         ['<Down>'] = { 'select_next', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
         ['<C-n>'] = { 'select_next', 'fallback' },
 
-        -- 捲動說明文件
         ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-        
-        -- 呼叫補全選單 (手動觸發)
         ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
         ['<C-e>'] = { 'hide' },
+      },
+      -- 💡 額外建議：既然要用 Enter 確認，建議開啟這個設定
+      -- 這樣當你打字時，LSP 會自動幫你選中第一個最準確的項目
+      completion = {
+      list = { selection = { preselect = true, auto_insert = false } },
       },
     },
   },
