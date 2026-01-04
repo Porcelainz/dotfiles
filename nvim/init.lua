@@ -120,12 +120,21 @@ if vim.g.vscode then
     keymap('n', 'gd', function() vscode.call('editor.action.revealDefinition') end, opts)
     keymap('n', 'gr', function() vscode.call('editor.action.goToReferences') end, opts)
     keymap('n', 'gi', function() vscode.call('editor.action.goToImplementation') end, opts)
-    keymap('n', '<leader>rn', function() vscode.call('editor.action.rename') end, opts)
-
+    -- 🔍 搜尋與動作
+    keymap('n', 'ga', function() vscode.call('editor.action.quickFix') end, opts)      -- Quick Action / Fix
+    keymap('n', 'gs', function() vscode.call('workbench.action.gotoSymbol') end, opts) -- 找當前檔案 Symbol (@)
+    keymap('n', 'gS', function() vscode.call('workbench.action.showAllSymbols') end, opts) -- 找全域 Symbol (#)
+    keymap('n', 'gn', function() vscode.call('editor.action.rename') end, opts)        -- Rename (原本是 <leader>rn)
+    keymap('n', 'gw', function() vscode.call('editor.action.showHover') end, opts)    -- Hover (What/Wiki，取代難按的 gh)
+    -- 直接在小視窗看定義/文件，不用跳走
+    keymap('n', 'gp', function() vscode.call('editor.action.peekDefinition') end, opts)
     -- 🐛 錯誤診斷
     keymap('n', 'gl', function() vscode.call('editor.action.marker.nextInFiles') end, opts)
     keymap('n', 'gL', function() vscode.call('editor.action.marker.prevInFiles') end, opts)
-
+    -- 模擬 LazyVim 的 leader + s + w (搜尋游標下的字)
+    keymap('n', '<leader>sw', function()
+        vscode.call('workbench.action.findInFiles', { args = { query = vim.fn.expand('<cword>') } })
+    end, opts)
     -- --- 剪貼簿修復 (Visual Mode Ctrl+C/V/X 轉發) ---
     keymap({'n', 'v', 'i'}, '<C-a>', function() vscode.call('editor.action.selectAll') end, opts)
     keymap({'n', 'v', 'i'}, '<C-x>', function() vscode.call('editor.action.clipboardCutAction') end, opts)

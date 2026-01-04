@@ -72,9 +72,8 @@
   "editor.tabCompletion": "on",
   "catppuccin.italicComments": false,
   "catppuccin.italicKeywords": false,
-  "workbench.colorTheme": "Catppuccin Latte",
   "catppuccin.accentColor": "rosewater",
-  "background.enabled": true,
+  "background.enabled": false,
   "workbench.colorCustomizations": {
     // --- 1. 通用預設值 (以防萬一) ---
     "editorInlayHint.foreground": "#99adb4",
@@ -118,4 +117,16 @@
   "editor.smoothScrolling": true,
   "editor.guides.bracketPairsHorizontal": true,
   "terminal.integrated.minimumContrastRatio": 1,
+  "workbench.colorTheme": "Catppuccin Latte",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "rust": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.acceptSuggestionOnEnter": "off",
 }

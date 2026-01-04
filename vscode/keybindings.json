@@ -1,6 +1,6 @@
 [
     // ========================================================
-    // 🪟 視窗導航 (Window Navigation - HJKL) 12/28
+    // 🪟 視窗導航 (Window Navigation - HJKL)
     // ========================================================
     {
         "key": "ctrl+h",
@@ -210,5 +210,81 @@
         "key": "ctrl+x",
         "command": "-vscode-neovim.send",
         "when": "editorTextFocus && neovim.ctrlKeysNormal.x"
-    }
+    },
+    // 1. 在 Quick Action (ga) 與建議清單中用 Ctrl+j/k 上下選
+    {
+        "key": "ctrl+j",
+        "command": "selectNextCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible"
+    },
+    // 2. 在 Quick Open (<leader><leader> 或 gs) 中用 Ctrl+j/k
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    // 1. 從搜尋框「只移動焦點」到下方的列表，不觸發開檔
+    {
+        "key": "ctrl+j",
+        "command": "search.action.focusSearchList",
+        "when": "searchViewletVisible && searchInputBoxFocus"
+    },
+    // 2. 在清單中用 j/k 移動 (這時只會移動高亮條，不會開檔)
+    {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "searchViewletVisible && sideBarFocus && !inputFocus"
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "searchViewletVisible && sideBarFocus && !inputFocus"
+    },
+    // 3. 選好了，按 Enter 或是 l 才真的打開
+    {
+        "key": "enter",
+        "command": "search.action.openResult",
+        "when": "searchViewletVisible && sideBarFocus && !inputFocus"
+    },
+    {
+        "key": "l",
+        "command": "search.action.openResult",
+        "when": "searchViewletVisible && sideBarFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.scm"
+    },
+    // -----------------------------------------------------------
+    // 1. 【最高優先】如果有一般選字選單，Tab 鍵 = 確認選字
+    // -----------------------------------------------------------
+    {
+        "key": "tab",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetVisible && suggestWidgetHasFocusedSuggestion && textInputFocus"
+    },
+    // -----------------------------------------------------------
+    // 2. 【次要優先】只有在「沒選單」時，Tab 鍵 = 確認 Antigravity AI
+    //    注意前面的 !(suggestWidgetVisible) 
+    // -----------------------------------------------------------
 ]

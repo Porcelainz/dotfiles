@@ -1,16 +1,20 @@
 {
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[javascript]": {
-    "editor.maxTokenizationLineLength": 2500
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.accessibilitySupport": "off",
-  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "Maple Mono NF CN",
   "editor.fontLigatures": true,
   "files.autoSave": "onFocusChange",
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1",
     "FIG_NEW_SESSION": "1"
   },
-  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.fontFamily": "Maple Mono NF CN",
   "terminal.integrated.fontSize": 14,
   "window.autoDetectHighContrast": false,
   "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
@@ -55,14 +59,14 @@
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "workbench.iconTheme": "catppuccin-latte",
-  "editor.codeLensFontFamily": "FiraCode Nerd Font",
-  "editor.inlayHints.fontFamily": "FiraCode Nerd Font",
-  "editor.inlineSuggest.fontFamily": "FiraCode Nerd Font",
-  "debug.console.fontFamily": "FiraCode Nerd Font",
-  "scm.inputFontFamily": "FiraCode Nerd Font",
+  "editor.codeLensFontFamily": "Maple Mono NF CN",
+  "editor.inlayHints.fontFamily": "Maple Mono NF CN",
+  "editor.inlineSuggest.fontFamily": "Maple Mono NF CN",
+  "debug.console.fontFamily": "Maple Mono NF CN",
+  "scm.inputFontFamily": "Maple Mono NF CN",
   "terminal.integrated.fontLigatures.enabled": true,
-  "chat.editor.fontFamily": "FiraCode Nerd Font",
-  "errorLens.fontFamily": "FiraCode Nerd Font",
+  "chat.editor.fontFamily": "Maple Mono NF CN",
+  "errorLens.fontFamily": "Maple Mono NF CN",
   "workbench.editor.empty.hint": "hidden",
   "diffEditor.renderSideBySide": false,
   "editor.fontWeight": "normal",
@@ -71,17 +75,17 @@
   "editor.tabCompletion": "on",
   "catppuccin.italicComments": false,
   "catppuccin.italicKeywords": false,
-  "workbench.colorTheme": "Eva Light",
+  "workbench.colorTheme": "Catppuccin Latte",
   "catppuccin.accentColor": "rosewater",
   "terminal.integrated.minimumContrastRatio": 1,
-  "background.enabled": true,
+  "background.enabled": false,
   "workbench.colorCustomizations": {
     "editorInlayHint.foreground": "#99adb4",
     "editorInlayHint.background": "#00000000",
     "editorInlayHint.typeForeground": "#99adb4",
     "editorInlayHint.typeBackground": "#00000000",
     "editorInlayHint.parameterForeground": "#99adb4",
-    "editorInlayHint.parameterBackground": "#00000000"
+    "editorInlayHint.parameterBackground": "#00000000",
   },
   // 新版改成針對不同區域設定，我們專注在 "editor" (編輯區) 就好
   "background.fullscreen": {
@@ -91,7 +95,7 @@
       "file:///Users/porcelain_/Pictures/sailor_moon_day2.png"
     ],
     // 樣式設定
-    "opacity": 0.075, // 散光保命設定，維持 0.1
+    "opacity": 0.05, // 散光保命設定，維持 0.1
     "size": "cover", // cover = 鋪滿整個視窗，不管視窗怎麼拉都會填滿
     "position": "center", // 圖片置中
     "interval": 0, // 關閉輪播
@@ -117,4 +121,7 @@
   "editor.guides.indentation": true,
   "editor.guides.bracketPairsHorizontal": true,
   "editor.inlayHints.enabled": "on",
+  "json.schemaDownload.enable": true,
+  "git.autofetch": true,
+  "editor.acceptSuggestionOnEnter": "off",
 }
