@@ -142,6 +142,8 @@ if vim.g.vscode then
     keymap({'n', 'v', 'i'}, '<C-v>', function() vscode.call('editor.action.clipboardPasteAction') end, opts)
     -- 補回 Visual Block 模式
     keymap('n', '<leader>v', '<C-v>', opts)
+    -- 透過 VS Code Neovim 提供的 call 函式去呼叫 VS Code 擴充功能的指令
+    vim.keymap.set('n', '<leader>gg', [[<cmd>lua require('vscode').call('lazygit.openLazygit')<CR>]], { silent = true })
 end
 
 -- ==========================================
