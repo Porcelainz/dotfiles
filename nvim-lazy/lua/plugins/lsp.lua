@@ -9,18 +9,18 @@ return {
                             ["ui.completion.usePlaceholders"] = true,
                             ["formatting.gofumpt"] = true,
                         },
-                        html = {
-                            filetypes = {
-                                "html",
-                                "javascript",
-                                "javascriptreact",
-                                "javascript.jsx",
-                                "typescript",
-                                "typescriptreact",
-                                "typescript.tsx",
-                                "gohtmltmpl",
-                            },
-                        },
+                    },
+                },
+                html = {
+                    filetypes = {
+                        "html",
+                        "javascript",
+                        "javascriptreact",
+                        "javascript.jsx",
+                        "typescript",
+                        "typescriptreact",
+                        "typescript.tsx",
+                        "gohtmltmpl", -- 關鍵：讓 HTML LSP 認得這個類型
                     },
                 },
             },
@@ -50,4 +50,3 @@ return {
         },
     },
 }
-
