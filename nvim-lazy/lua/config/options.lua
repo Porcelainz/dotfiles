@@ -29,9 +29,8 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
 })
 vim.filetype.add({
     extension = {
-        tmpl = "gohtmltmpl",
+        tmpl = "html",
     },
 })
 -- 強制將 gohtmltmpl 檔案關聯到 gotmpl 語法解析器
-vim.treesitter.language.register("gotmpl", "gohtmltmpl")
-
+vim.treesitter.language.register("gotmpl", "gohtml")
