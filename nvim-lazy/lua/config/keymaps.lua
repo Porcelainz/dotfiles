@@ -146,3 +146,17 @@ vim.api.nvim_create_autocmd("CursorHold", {
     vim.diagnostic.open_float(nil, { focusable = false })
   end,
 })
+
+-- 先刪除 LazyVim 預設的綁定，避免衝突
+vim.keymap.del("n", "<C-/>")
+vim.keymap.del("n", "<leader>ft") -- 如果你也想改掉 leader ft
+
+-- 重新綁定，強制給予一個固定 id (例如 "single_terminal")
+vim.keymap.set("n", "<C-/>", function()
+  Snacks.terminal.toggle(nil, { id = "single_term" })
+end, { desc = "Terminal (Single Instance)" })
+
+-- 處理某些終端機下 Ctrl+/ 會變成 Ctrl+_ 的問題
+vim.keymap.set("n", "<C-_>", function()
+  Snacks.terminal.toggle(nil, { id = "single_term" })
+end, { desc = "Terminal (Single Instance)" })
