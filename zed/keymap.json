@@ -1,0 +1,54 @@
+[
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            "H": "vim::StartOfLine",
+            "L": "vim::EndOfLine",
+            "ctrl-d": [
+                "vim::ScrollDown",
+                "editor::ScrollCursorCenter"
+            ],
+            "ctrl-u": [
+                "vim::ScrollUp",
+                "editor::ScrollCursorCenter"
+            ],
+            "space e": "project_panel::ToggleFocus",
+            "space w": "workspace::Save",
+            "space q": "pane::CloseActiveItem",
+            "space f": "pane::DeploySearch",
+            "space space": "file_finder::Toggle",
+            "space a": "pane::GoBack",
+            "space d": "pane::GoForward",
+            "g d": "editor::GoToDefinition",
+            "g r": "editor::FindAllReferences",
+            "g i": "editor::GoToImplementation",
+            "g a": "editor::ToggleCodeActions",
+            "g s": "outline::Toggle",
+            "g shift-s": "project_symbols::Toggle",
+            "g n": "editor::Rename",
+            "g w": "editor::Hover",
+            "g l": "editor::GoToDiagnostic",
+            "g shift-l": "editor::GoToPrevDiagnostic",
+            "space g g": "git_panel::ToggleFocus"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == visual",
+        "bindings": {
+            "H": "vim::StartOfLine",
+            "L": "vim::EndOfLine",
+            "<": "editor::Outdent",
+            ">": "editor::Indent",
+            "p": "vim::Paste"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal && !menu",
+        "bindings": {
+            "escape": [
+                "workspace::CloseAllDocks",
+                "editor::Cancel"
+            ]
+        }
+    }
+]
