@@ -28,6 +28,15 @@
     "[Catppuccin Macchiato]": {
       "enabled": true
     },
+    "[Catppuccin Latte]": {
+      "enabled": true,
+      "rules": {
+        "variable": {
+          "foreground": "#000000",
+          "fontStyle": ""
+        }
+      }
+    }
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -123,5 +132,5 @@
   "editor.inlayHints.enabled": "on",
   "json.schemaDownload.enable": true,
   "git.autofetch": true,
-  "editor.acceptSuggestionOnEnter": "off",
+  "editor.acceptSuggestionOnEnter": "off"
 }
