@@ -46,7 +46,7 @@
   },
   "terminal.integrated.lineHeight": 0,
   "markdown.preview.lineHeight": 0,
-  "editor.lineHeight": 22,
+  "editor.lineHeight": 20,
   "editor.formatOnSave": true,
   "go.useLanguageServer": true,
   "editor.inlineSuggest.suppressSuggestions": true,
