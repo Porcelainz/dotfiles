@@ -7,14 +7,14 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.accessibilitySupport": "off",
-  "editor.fontFamily": "Maple Mono NF CN",
+  "editor.fontFamily": "FiraCode Nerd Font Ret",
   "editor.fontLigatures": true,
   "files.autoSave": "onFocusChange",
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1",
     "FIG_NEW_SESSION": "1"
   },
-  "terminal.integrated.fontFamily": "Maple Mono NF CN",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Ret",
   "terminal.integrated.fontSize": 14,
   "window.autoDetectHighContrast": false,
   "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
@@ -68,14 +68,14 @@
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "workbench.iconTheme": "catppuccin-latte",
-  "editor.codeLensFontFamily": "Maple Mono NF CN",
-  "editor.inlayHints.fontFamily": "Maple Mono NF CN",
-  "editor.inlineSuggest.fontFamily": "Maple Mono NF CN",
-  "debug.console.fontFamily": "Maple Mono NF CN",
-  "scm.inputFontFamily": "Maple Mono NF CN",
+  "editor.codeLensFontFamily": "FiraCode Nerd Font Ret",
+  "editor.inlayHints.fontFamily": "FiraCode Nerd Font Ret",
+  "editor.inlineSuggest.fontFamily": "FiraCode Nerd Font Ret",
+  "debug.console.fontFamily": "FiraCode Nerd Font Ret",
+  "scm.inputFontFamily": "FiraCode Nerd Font Ret",
   "terminal.integrated.fontLigatures.enabled": true,
-  "chat.editor.fontFamily": "Maple Mono NF CN",
-  "errorLens.fontFamily": "Maple Mono NF CN",
+  "chat.editor.fontFamily": "FiraCode Nerd Font Ret",
+  "errorLens.fontFamily": "FiraCode Nerd Font Ret",
   "workbench.editor.empty.hint": "hidden",
   "diffEditor.renderSideBySide": false,
   "editor.fontWeight": "normal",
@@ -132,5 +132,10 @@
   "editor.inlayHints.enabled": "on",
   "json.schemaDownload.enable": true,
   "git.autofetch": true,
-  "editor.acceptSuggestionOnEnter": "off"
+  "editor.acceptSuggestionOnEnter": "off",
+  "agq.pinnedModels": [
+    "MODEL_PLACEHOLDER_M12",
+    "MODEL_PLACEHOLDER_M8"
+  ],
+  "git.confirmSync": false,
 }
