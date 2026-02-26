@@ -1,0 +1,5 @@
+google-cloud-cli
+google-cloud-cli-gsutil
+lazydocker-bin-debug
+yay
+yay-debug
